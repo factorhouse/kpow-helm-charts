@@ -20,7 +20,7 @@ See [kPow on the AWS Marketplace](https://docs.kpow.io/installation/aws-marketpl
 
 ## Installation
 
-You need to setup your Kubernetes environment before you can install kPow. 
+You need to connect to a Kubernetes environment before you can install kPow. 
 
 The following examples demonstrate installing kPow in [Amazon EKS](https://aws.amazon.com/eks/).
 
