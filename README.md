@@ -33,7 +33,7 @@ kubernetes   ClusterIP   12.345.6.7   <none>        443/TCP   28h
 
 ### Update kPow Helm Configuration
 
-Update [kpow-io/templates/kpow-io-config.yaml](kpow-io/templates/kpow-io-config.yaml) with your specific environment configuration.
+Update [kpow/templates/kpow-config.yaml](kpow-io/templates/kpow-io-config.yaml) with your specific environment configuration.
 
 The minimum information required by kPow to operate is:
 
