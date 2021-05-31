@@ -1,10 +1,8 @@
-# Run kPow for Apache Kafka® in Kubernetes with Helm
+# Run kPow for Apache Kafka in Kubernetes
 
-[kPow](https://kpow.io) is the all-in-one toolkit for Apache Kafka that allows engineers and teams to monitor, manage, and learn about Kafka Clusters, Schema Registries and Kafka Connect Installations.  
+This is the Helm Chart for [kPow for Apache Kafka®](https://kpow.io).  
 
-[Helm](https://helm.sh) is the package manager for Kubernetes. 
-
-This repository contains Helm configuration to get kPow running in Kubernetes in *five minutes or less*.
+[Helm](https://helm.sh) is the package manager for Kubernetes.
 
 This repository is a Helm repo published at https://charts.operatr.io. View it on [ArtifactHUB](https://artifacthub.io/packages/helm/operatr-io/kpow).
 
@@ -12,13 +10,15 @@ This repository is a Helm repo published at https://charts.operatr.io. View it o
 
 This Helm chart uses the latest [operatr/kpow](https://hub.docker.com/r/operatr/kpow) container from Dockerhub. 
 
-To run the Dockerhub container requires a license. Start a [free 30-day trial](https://kpow.io/try) of kPow today!
+To run the Dockerhub container requires a license. Start a [free 30-day trial](https://kpow.io/try) of kPow today.
 
-See [kPow on the AWS Marketplace](https://docs.kpow.io/installation/aws-marketplace) for information on having kPow billed automatically to your AWS account, no license required.   
+See [kPow on the AWS Marketplace](https://docs.kpow.io/installation/aws-marketplace) to have kPow billed automatically to your AWS account, no license required.   
 
 ## Installation
 
-You need to setup your Kubernetes environment before you can install kPow. The following examples demonstrate installing kPow in [Amazon EKS](https://aws.amazon.com/eks/).
+You need to setup your Kubernetes environment before you can install kPow. 
+
+The following examples demonstrate installing kPow in [Amazon EKS](https://aws.amazon.com/eks/).
 
 ### Configure Kubernetes/EKS 
 
