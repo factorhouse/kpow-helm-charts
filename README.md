@@ -1,6 +1,7 @@
 # Run kPow for Apache Kafka in Kubernetes
 
 [![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/kpow)](https://artifacthub.io/packages/search?repo=kpow)
+[![Release Charts](https://github.com/operatr-io/kpow-helm-charts/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/operatr-io/kpow-helm-charts/actions/workflows/release.yml)
 
 This is the [kPow for Apache Kafka®](https://kpow.io) Helm Charts Repository, published at [https://charts.kpow.io](https://charts.kpow.io).  
 
