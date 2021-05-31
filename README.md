@@ -1,2 +1,2 @@
-# kpow-helm-charts
-Run kPow in Kubernetes with Helm
+# Run [kPow](https://kpow.io) in Kubernetes with Helm
+
