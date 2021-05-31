@@ -3,32 +3,12 @@ entries:
   kpow:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-05-31T07:34:29.460047104Z"
+    created: "2021-05-31T09:15:48.747686359Z"
     description: Run kPow for Apache Kafka in Kubernetes
-    digest: 2a2555239f7356781a7ed18dad14bda17621b3fa46afb9d59a9cd8f6e3a477e0
+    digest: 4e31214838a94e7db6a4d760ef4b9b7b9b97ba400acf81b9c4df55dfd4f15f94
     name: kpow
     type: application
     urls:
-    - https://github.com/operatr-io/kpow-helm-charts/releases/download/kpow-1.0.3/kpow-1.0.3.tgz
-    version: 1.0.3
-  - apiVersion: v2
-    appVersion: latest
-    created: "2021-05-31T07:30:31.464544926Z"
-    description: A Helm chart for kPow on Kubernetes
-    digest: 6d795c64e6cd5c69a36f757da98322073f41e9ca12986341891c7b1cbb365dd9
-    name: kpow
-    type: application
-    urls:
-    - https://github.com/operatr-io/kpow-helm-charts/releases/download/kpow-1.0.2/kpow-1.0.2.tgz
-    version: 1.0.2
-  - apiVersion: v2
-    appVersion: latest
-    created: "2021-05-31T05:58:55.342600176Z"
-    description: A Helm chart for kPow on Kubernetes
-    digest: 6bfb1b60f90bf55eb76d996a1b6b7d1faba642494b02b4baad7442c718d69e57
-    name: kpow
-    type: application
-    urls:
-    - https://github.com/operatr-io/kpow-helm-charts/releases/download/kpow-1.0.1/kpow-1.0.1.tgz
-    version: 1.0.1
-generated: "2021-05-31T07:34:29.460077206Z"
+    - https://github.com/operatr-io/kpow-helm-charts/releases/download/kpow-1.0.4/kpow-1.0.4.tgz
+    version: 1.0.4
+generated: "2021-05-31T09:15:48.747691759Z"
