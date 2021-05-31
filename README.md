@@ -6,7 +6,7 @@ This is the Helm Chart for [kPow for Apache Kafka®](https://kpow.io).
 
 [kPow](https://kpow.io) is the all-in-one toolkit to manage, monitor, and learn about your Kafka resources.
 
-The [Operatr IO](https://operatr.io) Helm repository is published at [https://kpow.operatr.io](https://kpow.operatr.io). 
+This Helm Chart is published in the repository at [https://charts.kpow.io](https://charts.kpow.io). 
 
 View the kPow Helm Chart on [ArtifactHUB](https://artifacthub.io/packages/helm/operatr-io/kpow).
 
@@ -43,12 +43,12 @@ kubernetes   ClusterIP   12.345.6.7   <none>        443/TCP   28h
 
 ### Run kPow in Kubernetes
 
-#### Configure the Operatr IO Helm Repository
+#### Configure the kPow Helm Repository
 
-Add the Operatr IO Helm Repository in order to use the kPow Helm Chart.
+Add the Helm Repository in order to use the kPow Helm Chart.
 
 ```
-helm repo add operatr-io https://charts.operatr.io
+helm repo add kpow https://charts.kpow.io
 ```
 
 #### Pull the kPow Chart
