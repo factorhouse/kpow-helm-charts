@@ -61,6 +61,10 @@ helm pull operatr-io/kpow --untar --untardir .
 
 Update [./kpow/templates/kpow-config.yaml](charts/kpow/templates/kpow-config.yaml) with your environment configuration.
 
+```bash
+vi ./kpow/templates/kpow-config.yaml
+```
+
 See the [kPow Documentation](https://docs.kpow.io) for a full list of configuration options.
 
 The minimum information required by kPow to operate is:
@@ -133,3 +137,7 @@ $ helm delete kpow
 ### Get Help!
 
 If you have any issues or errors, please contact support@operatr.io.
+
+### Make Changes
+
+This repository is Apache 2.0 licensed, you are welcome to clone and modify as required.
