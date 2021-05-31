@@ -1,5 +1,7 @@
 # Run kPow for Apache Kafka in Kubernetes
 
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/kpow)](https://artifacthub.io/packages/search?repo=kpow)
+
 This is the [kPow for Apache Kafka®](https://kpow.io) Helm Charts Repository, published at [https://charts.kpow.io](https://charts.kpow.io).  
 
 [Helm](https://helm.sh) is the package manager for Kubernetes.
