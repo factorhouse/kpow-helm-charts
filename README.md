@@ -59,18 +59,18 @@ helm pull kpow/kpow --untar --untardir .
 
 #### Update kPow Configuration
 
+The minimum information required by kPow to operate is:
+
+* License Details
+* Kafka Bootstrap URL
+
 Update [./kpow/templates/kpow-config.yaml](charts/kpow/templates/kpow-config.yaml) with your environment configuration.
+
+See the [kPow Documentation](https://docs.kpow.io) for a full list of configuration options.
 
 ```bash
 vi ./kpow/templates/kpow-config.yaml
 ```
-
-See the [kPow Documentation](https://docs.kpow.io) for a full list of configuration options.
-
-The minimum information required by kPow to operate is:
-
-* License parameters
-* Kafka Bootstrap URL
 
 #### Start a kPow Instance
 
