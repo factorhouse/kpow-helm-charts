@@ -1,18 +1,18 @@
 # Run kPow for Apache Kafka in Kubernetes
 
-This is the Helm Chart for [kPow for Apache Kafka®](https://kpow.io).
+This is the [kPow for Apache Kafka®](https://kpow.io) Helm Charts Repository, published at [https://charts.kpow.io](https://charts.kpow.io).
 
 [Helm](https://helm.sh) is the package manager for Kubernetes.
 
 [kPow](https://kpow.io) is the all-in-one toolkit to manage, monitor, and learn about your Kafka resources.
 
-This Helm Chart is published in the repository at [https://charts.kpow.io](https://charts.kpow.io).
+View this repository and associated charts on [ArtifactHUB](https://artifacthub.io/packages/search?repo=kpow).
 
-View the kPow Helm Chart on [ArtifactHUB](https://artifacthub.io/packages/helm/operatr-io/kpow).
+# Helm Charts
+
+This repository currently contains a single Helm chart that uses the latest [operatr/kpow](https://hub.docker.com/r/operatr/kpow) container from Dockerhub.
 
 ## Prerequisites
-
-This Helm chart uses the latest [operatr/kpow](https://hub.docker.com/r/operatr/kpow) container from Dockerhub.
 
 To run the Dockerhub container requires a license. Start a [free 30-day trial](https://kpow.io/try) of kPow today.
 
@@ -54,23 +54,23 @@ helm repo add kpow https://charts.kpow.io
 #### Pull the kPow Chart
 
 ```
-helm pull operatr-io/kpow --untar --untardir .
+helm pull kpow/kpow --untar --untardir .
 ```
 
 #### Update kPow Configuration
 
+The minimum information required by kPow to operate is:
+
+* License Details
+* Kafka Bootstrap URL
+
 Update [./kpow/templates/kpow-config.yaml](charts/kpow/templates/kpow-config.yaml) with your environment configuration.
+
+See the [kPow Documentation](https://docs.kpow.io) for a full list of configuration options.
 
 ```bash
 vi ./kpow/templates/kpow-config.yaml
 ```
-
-See the [kPow Documentation](https://docs.kpow.io) for a full list of configuration options.
-
-The minimum information required by kPow to operate is:
-
-* License parameters
-* Kafka Bootstrap URL
 
 #### Start a kPow Instance
 
@@ -123,7 +123,6 @@ Status:       Running
 kubectl logs --namespace operatr-io my-kpow-9988df6b6-vvf8z 
 
 11:36:49.111 INFO  [main] operatr.system ? start kPow
-...
 ...
 ```
 
