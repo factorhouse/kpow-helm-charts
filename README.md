@@ -4,7 +4,9 @@ This is the Helm Chart for [kPow for Apache Kafka®](https://kpow.io).
 
 [Helm](https://helm.sh) is the package manager for Kubernetes.
 
-This repository is a Helm repo published at https://charts.operatr.io. View it on [ArtifactHUB](https://artifacthub.io/packages/helm/operatr-io/kpow).
+The Operatr IO Helm repository is published at https://charts.operatr.io. 
+
+View the kPow Helm Chart on [ArtifactHUB](https://artifacthub.io/packages/helm/operatr-io/kpow).
 
 ## Prerequisites
 
