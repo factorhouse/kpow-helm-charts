@@ -6,7 +6,7 @@ This is the Helm Chart for [kPow for Apache Kafka®](https://kpow.io).
 
 [kPow](https://kpow.io) is the all-in-one toolkit to manage, monitor, and learn about your Kafka resources.
 
-The [Operatr IO](https://operatr.io) Helm repository is published at [https://charts.operatr.io](https://charts.operatr.io). 
+The [Operatr IO](https://operatr.io) Helm repository is published at [https://kpow.operatr.io](https://kpow.operatr.io). 
 
 View the kPow Helm Chart on [ArtifactHUB](https://artifacthub.io/packages/helm/operatr-io/kpow).
 
