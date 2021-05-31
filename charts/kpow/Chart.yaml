@@ -2,5 +2,18 @@ apiVersion: v2
 name: kpow
 description: Run kPow for Apache Kafka in Kubernetes
 type: application
-version: 1.0.5
+version: 1.0.6
 appVersion: latest
+keywords:
+  - kafka
+  - kafka-ui
+  - kafka-connect
+  - schema-registry
+  - monitoring
+home: "https://kpow.io"
+sources:
+  - "https://github.com/operatr-io/kpow"
+  - "https://github.com/operatr-io/kpow-helm-charts/"
+maintainers:
+  - name: "Operatr.IO Support"
+    email: "support@operatr.io"
