@@ -3,6 +3,16 @@ entries:
   kpow:
   - apiVersion: v2
     appVersion: latest
+    created: "2021-05-31T07:30:31.464544926Z"
+    description: A Helm chart for kPow on Kubernetes
+    digest: 6d795c64e6cd5c69a36f757da98322073f41e9ca12986341891c7b1cbb365dd9
+    name: kpow
+    type: application
+    urls:
+    - https://github.com/operatr-io/helm-charts/releases/download/kpow-1.0.2/kpow-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: latest
     created: "2021-05-31T05:58:55.342600176Z"
     description: A Helm chart for kPow on Kubernetes
     digest: 6bfb1b60f90bf55eb76d996a1b6b7d1faba642494b02b4baad7442c718d69e57
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/operatr-io/helm-charts/releases/download/kpow-1.0.1/kpow-1.0.1.tgz
     version: 1.0.1
-generated: "2021-05-31T05:58:55.342608276Z"
+generated: "2021-05-31T07:30:31.464552626Z"
