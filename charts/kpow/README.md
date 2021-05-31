@@ -1,30 +1,30 @@
 # Run kPow for Apache Kafka in Kubernetes
 
-This is the Helm Chart for [kPow for Apache Kafka®](https://kpow.io).  
+This is the Helm Chart for [kPow for Apache Kafka®](https://kpow.io).
 
 [Helm](https://helm.sh) is the package manager for Kubernetes.
 
 [kPow](https://kpow.io) is the all-in-one toolkit to manage, monitor, and learn about your Kafka resources.
 
-The [Operatr IO](https://operatr.io) Helm repository is published at [https://charts.operatr.io](https://charts.operatr.io). 
+This Helm Chart is published in the repository at [https://charts.kpow.io](https://charts.kpow.io).
 
 View the kPow Helm Chart on [ArtifactHUB](https://artifacthub.io/packages/helm/operatr-io/kpow).
 
 ## Prerequisites
 
-This Helm chart uses the latest [operatr/kpow](https://hub.docker.com/r/operatr/kpow) container from Dockerhub. 
+This Helm chart uses the latest [operatr/kpow](https://hub.docker.com/r/operatr/kpow) container from Dockerhub.
 
 To run the Dockerhub container requires a license. Start a [free 30-day trial](https://kpow.io/try) of kPow today.
 
-See [kPow on the AWS Marketplace](https://docs.kpow.io/installation/aws-marketplace) to have kPow billed automatically to your AWS account, no license required.   
+See [kPow on the AWS Marketplace](https://docs.kpow.io/installation/aws-marketplace) to have kPow billed automatically to your AWS account, no license required.
 
 ## Installation
 
-You need to connect to a Kubernetes environment before you can install kPow. 
+You need to connect to a Kubernetes environment before you can install kPow.
 
 The following examples demonstrate installing kPow in [Amazon EKS](https://aws.amazon.com/eks/).
 
-### Configure Kubernetes/EKS 
+### Configure Kubernetes/EKS
 
 ```bash
 aws eks --region <your-aws-region> update-kubeconfig --name <your-eks-cluster-name>
@@ -43,12 +43,12 @@ kubernetes   ClusterIP   12.345.6.7   <none>        443/TCP   28h
 
 ### Run kPow in Kubernetes
 
-#### Configure the Operatr IO Helm Repository
+#### Configure the kPow Helm Repository
 
-Add the Operatr IO Helm Repository in order to use the kPow Helm Chart.
+Add the Helm Repository in order to use the kPow Helm Chart.
 
 ```
-helm repo add operatr-io https://charts.operatr.io
+helm repo add kpow https://charts.kpow.io
 ```
 
 #### Pull the kPow Chart
@@ -88,7 +88,7 @@ NOTES:
   echo "Visit http://127.0.0.1:3000 to use your application"
   kubectl --namespace operatr-io port-forward $POD_NAME 3000:3000
 ```
-  
+
 #### Access the kPow UI
 
 Follow the instructions in the notes to configure port forwarding.
