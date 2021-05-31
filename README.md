@@ -1,12 +1,14 @@
 # Run kPow for Apache Kafka in Kubernetes
 
-<div class="artifacthub-widget" data-url="https://artifacthub.io/packages/helm/operatr-io/kpow" data-theme="light" data-header="true" data-responsive="false"><blockquote><p lang="en" dir="ltr"><b>kpow</b>: A Helm chart for kPow on Kubernetes</p>&mdash; Open in <a href="https://artifacthub.io/packages/helm/operatr-io/kpow">Artifact Hub</a></blockquote></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
-
 This is the Helm Chart for [kPow for Apache Kafka®](https://kpow.io).  
 
 [Helm](https://helm.sh) is the package manager for Kubernetes.
 
 [kPow](https://kpow.io) is the all-in-one toolkit to manage, monitor, and learn about your Kafka resources.
+
+The [Operatr IO](https://operatr.io) Helm repository is published at [https://charts.operatr.io](https://charts.operatr.io). 
+
+View the kPow Helm Chart on [ArtifactHUB](https://artifacthub.io/packages/helm/operatr-io/kpow).
 
 ## Prerequisites
 
