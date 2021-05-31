@@ -75,18 +75,18 @@ The minimum information required by kPow to operate is:
 #### Start a kPow Instance
 
 ```bash
-$ helm install my-kpow ./kpow
+$ helm install --namespace operatr-io --create-namespace my-kpow ./kpow
 
 NAME: my-kpow
-LAST DEPLOYED: Mon May 31 16:09:57 2021
-NAMESPACE: default
+LAST DEPLOYED: Mon May 31 17:22:21 2021
+NAMESPACE: operatr-io
 STATUS: deployed
 REVISION: 1
 NOTES:
 1. Get the application URL by running these commands:
-  export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=kpow,app.kubernetes.io/instance=my-kpow" -o jsonpath="{.items[0].metadata.name}")
+  export POD_NAME=$(kubectl get pods --namespace operatr-io -l "app.kubernetes.io/name=kpow,app.kubernetes.io/instance=my-kpow" -o jsonpath="{.items[0].metadata.name}")
   echo "Visit http://127.0.0.1:3000 to use your application"
-  kubectl --namespace default port-forward $POD_NAME 3000:3000
+  kubectl --namespace operatr-io port-forward $POD_NAME 3000:3000
 ```
   
 #### Access the kPow UI
@@ -94,9 +94,9 @@ NOTES:
 Follow the instructions in the notes to configure port forwarding.
 
 ```bash
-export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=kpow,app.kubernetes.io/instance=my-kpow" -o jsonpath="{.items[0].metadata.name}")
+export POD_NAME=$(kubectl get pods --namespace operatr-io -l "app.kubernetes.io/name=kpow,app.kubernetes.io/instance=my-kpow" -o jsonpath="{.items[0].metadata.name}")
 echo "Visit http://127.0.0.1:3000 to use your application"
-kubectl --namespace default port-forward $POD_NAME 3000:3000
+kubectl --namespace operatr-io port-forward $POD_NAME 3000:3000
 ```
 
 kPow is now available on [http://127.0.0.1:3000](http://127.0.0.1:3000).
@@ -104,24 +104,23 @@ kPow is now available on [http://127.0.0.1:3000](http://127.0.0.1:3000).
 #### Check the kPow Pod
 
 ```bash
-$ kubectl describe pods
-
-Name:           kpow-688bbc74-lrm6x
-Namespace:      default
-Priority:       0
-Node:           <none>
-Labels:         app.kubernetes.io/instance=kpow
-                app.kubernetes.io/name=kpow
-                pod-template-hash=688bbc74
-Annotations:    kubernetes.io/psp: eks.privileged
-Status:         Pending
-...
+$ kubectl describe pods --namespace operatr-io
+Name:         my-kpow-9988df6b6-vvf8z
+Namespace:    operatr-io
+Priority:     0
+Node:         ip-172-31-33-42.ap-southeast-2.compute.internal/172.31.33.42
+Start Time:   Mon, 31 May 2021 17:22:22 +1000
+Labels:       app.kubernetes.io/instance=my-kpow
+              app.kubernetes.io/name=kpow
+              pod-template-hash=9988df6b6
+Annotations:  kubernetes.io/psp: eks.privileged
+Status:       Running
 ```
 
 #### View the kPow Pod Logs
 
 ```bash
-kubectl logs kpow-688bbc74-lrm6x
+kubectl logs --namespace operatr-io my-kpow-9988df6b6-vvf8z 
 
 11:36:49.111 INFO  [main] operatr.system ? start kPow
 ...
@@ -131,13 +130,13 @@ kubectl logs kpow-688bbc74-lrm6x
 #### Remove kPow
 
 ```bash
-$ helm delete kpow
+$ helm delete --namespace operatr-io my-kpow
 ```
 
 ### Get Help!
 
 If you have any issues or errors, please contact support@operatr.io.
 
-### Make Changes
+### Licensing and Modifications
 
 This repository is Apache 2.0 licensed, you are welcome to clone and modify as required.
