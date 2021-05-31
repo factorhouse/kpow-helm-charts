@@ -124,7 +124,6 @@ kubectl logs --namespace operatr-io my-kpow-9988df6b6-vvf8z
 
 11:36:49.111 INFO  [main] operatr.system ? start kPow
 ...
-...
 ```
 
 #### Remove kPow
