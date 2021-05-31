@@ -11,7 +11,7 @@ fullnameOverride: ""
 serviceAccount:
   create: true
   annotations: {}
-  name: kpow-io
+  name: kpow
 
 podAnnotations: {}
 

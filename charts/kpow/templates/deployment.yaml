@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "kpow-io.fullname" . }}
+  name: {{ include "kpow.fullname" . }}
   labels:
-    {{- include "kpow-io.labels" . | nindent 4 }}
+    {{- include "kpow.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels:
-      {{- include "kpow-io.selectorLabels" . | nindent 6 }}
+      {{- include "kpow.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "kpow-io.selectorLabels" . | nindent 8 }}
+        {{- include "kpow.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "kpow-io.serviceAccountName" . }}
+      serviceAccountName: {{ include "kpow.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-                name: kpow-io-config
+                name: kpow-config
           ports:
             - name: http
               containerPort: 3000

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: kpow-io-config
+  name: kpow-config
 data:
 
   ### See https://docs.kpow.io for full configuration and installation guides
@@ -9,6 +9,8 @@ data:
   ### Note: The simplest kPow configuration requires only LICENSE_* and BOOTSTRAP.
 
   ### License Configuration (https://kpow.io/try <- 30 day trial licenses available)
+  ### Note: If using the AWS Marketplace kPow Container you do not need to supply LICENSE* parameters
+  ###       (https://aws.amazon.com/marketplace/seller-profile?id=ab356f1d-3394-4523-b5d4-b339e3cca9e0)
 
   LICENSE_ID: "replace-me"
   LICENSE_CODE: "replace-me"
