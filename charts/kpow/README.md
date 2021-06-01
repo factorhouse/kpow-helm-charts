@@ -27,7 +27,7 @@ Updated context arn:aws:eks:<your-aws-region>:123123123:cluster/<your-eks-cluste
 #### Confirm Kubernetes Cluster Availability
 
 ```bash
-$ kubectl get svc
+kubectl get svc
 
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   12.345.6.7   <none>        443/TCP   28h
@@ -43,7 +43,7 @@ Add the Helm Repository in order to use the kPow Helm Chart.
 helm repo add kpow https://charts.kpow.io
 ```
 
-Update Helm repositories to ensure you install the latest version of kPow
+Update Helm repositories to ensure you install the latest version of kPow.
 
 ```
 helm repo update
@@ -73,7 +73,7 @@ vi ./kpow/templates/kpow-config.yaml
 #### Start a kPow Instance
 
 ```bash
-$ helm install --namespace operatr-io --create-namespace my-kpow ./kpow
+helm install --namespace operatr-io --create-namespace my-kpow ./kpow
 
 NAME: my-kpow
 LAST DEPLOYED: Mon May 31 17:22:21 2021
@@ -102,7 +102,8 @@ kPow is now available on [http://127.0.0.1:3000](http://127.0.0.1:3000).
 #### Check the kPow Pod
 
 ```bash
-$ kubectl describe pods --namespace operatr-io
+kubectl describe pods --namespace operatr-io
+
 Name:         my-kpow-9988df6b6-vvf8z
 Namespace:    operatr-io
 Priority:     0
@@ -127,7 +128,7 @@ kubectl logs --namespace operatr-io my-kpow-9988df6b6-vvf8z
 #### Remove kPow
 
 ```bash
-$ helm delete --namespace operatr-io my-kpow
+helm delete --namespace operatr-io my-kpow
 ```
 
 ### Get Help!
