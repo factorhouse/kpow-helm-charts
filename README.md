@@ -13,7 +13,7 @@ View this repository and associated charts on [ArtifactHUB](https://artifacthub.
 
 # Helm Charts
 
-This repository currently contains a single Helm chart that uses the latest [operatr/kpow](https://hub.docker.com/r/operatr/kpow) container from Dockerhub.
+This repository currently contains a single Helm chart that uses the [operatr/kpow](https://hub.docker.com/r/operatr/kpow) container from Dockerhub.
 
 ## Prerequisites
 
@@ -52,6 +52,12 @@ Add the Helm Repository in order to use the kPow Helm Chart.
 
 ```
 helm repo add kpow https://charts.kpow.io
+```
+
+Update Helm repositories to ensure you install the latest version of kPow
+
+```
+helm repo update
 ```
 
 #### Pull the kPow Chart

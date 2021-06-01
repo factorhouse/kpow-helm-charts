@@ -2,7 +2,7 @@
 
 [kPow](https://kpow.io) is the all-in-one toolkit to manage, monitor, and learn about your Kafka resources.
 
-This Helm chart uses the latest [operatr/kpow](https://hub.docker.com/r/operatr/kpow) container from Dockerhub.
+This Helm chart uses the [operatr/kpow](https://hub.docker.com/r/operatr/kpow) container from Dockerhub.
 
 ## Prerequisites
 
@@ -41,6 +41,12 @@ Add the Helm Repository in order to use the kPow Helm Chart.
 
 ```
 helm repo add kpow https://charts.kpow.io
+```
+
+Update Helm repositories to ensure you install the latest version of kPow
+
+```
+helm repo update
 ```
 
 #### Pull the kPow Chart
