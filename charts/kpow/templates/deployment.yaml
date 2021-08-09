@@ -33,19 +33,42 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- with .Values.env }}
+          env:
+            {{- range $key, $val := . }}
+            - name: {{ $key }}
+              value: {{ $val }}
+            {{- end }}
+          {{- end }}
           envFrom:
+            {{- with .Values.envFromConfigMap }}
             - configMapRef:
-                name: kpow-config
+                name: {{ . }}
+            {{- end }}
+            {{- with .Values.envFromSecret }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
           ports:
             - name: http
               containerPort: 3000
               protocol: TCP
-          livenessProbe:
+          {{- with .Values.volumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          readinessProbe:
             httpGet:
               path: /up
               port: http
             initialDelaySeconds: 30
-            periodSeconds: 60
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthy
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 30
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -60,3 +83,7 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+    {{- with .Values.volumes }}
+    volumes:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
