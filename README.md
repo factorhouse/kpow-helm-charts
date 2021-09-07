@@ -60,31 +60,21 @@ Update Helm repositories to ensure you install the latest version of kPow.
 helm repo update
 ```
 
-#### Pull the kPow Chart
-
-```
-helm pull kpow/kpow --untar --untardir .
-```
-
-#### Update kPow Configuration
+### Start a kPow Instance
 
 The minimum information required by kPow to operate is:
 
 * License Details
 * Kafka Bootstrap URL
 
-Update [./kpow/templates/kpow-config.yaml](charts/kpow/templates/kpow-config.yaml) with your environment configuration.
-
 See the [kPow Documentation](https://docs.kpow.io) for a full list of configuration options.
 
-```bash
-vi ./kpow/templates/kpow-config.yaml
-```
-
-#### Start a kPow Instance
+Use the following to install from command line:
 
 ```bash
-helm install --namespace operatr-io --create-namespace my-kpow ./kpow
+helm install --namespace operatr-io --create-namespace my-kpow kpow/kpow \
+            --set env.LICENSE_ID=... --set env.LICENSE_CODE=... --set env.LICENSEE=... \
+            --set env.LICENSE_EXPIRY=... --set env.LICENSE_SIGNATURE=... --set env.BOOTSTRAP=...
 
 NAME: my-kpow
 LAST DEPLOYED: Mon May 31 17:22:21 2021
@@ -97,7 +87,15 @@ NOTES:
   echo "Visit http://127.0.0.1:3000 to use your application"
   kubectl --namespace operatr-io port-forward $POD_NAME 3000:3000
 ```
-  
+
+You can also pass an external ConfigMap with environment variables as follows:
+
+```bash
+helm install --namespace operatr-io --create-namespace my-kpow kpow/kpow --set envFromConfigMap=kpow-config
+```
+
+See [kpow-config.yaml.example](./kpow-config.yaml.example) for example environment configuration file.
+
 #### Access the kPow UI
 
 Follow the instructions in the notes to configure port forwarding.
