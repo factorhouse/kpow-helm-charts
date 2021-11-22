@@ -44,9 +44,9 @@ NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   12.345.6.7   <none>        443/TCP   28h
 ```
 
-### Run kPow in Kubernetes
+## Run kPow in Kubernetes
 
-#### Configure the kPow Helm Repository
+### Configure the kPow Helm Repository
 
 Add the Helm Repository in order to use the kPow Helm Chart.
 
@@ -69,12 +69,30 @@ The minimum information required by kPow to operate is:
 
 See the [kPow Documentation](https://docs.kpow.io) for a full list of configuration options.
 
+#### Start kPow with config from '--set env.XYZ'
+
+##### Quotation #####
+
+Some fields require quoting of characters within the value-string when using --set env.XXX to pass configuration .
+
+This particularly applies to commas, integers, and quotation marks (see examples below).
+
+##### Command #####
+
 Use the following to install from command line:
 
 ```bash
 helm install --namespace operatr-io --create-namespace my-kpow kpow/kpow \
-            --set env.LICENSE_ID=... --set env.LICENSE_CODE=... --set env.LICENSEE=... \
-            --set env.LICENSE_EXPIRY=... --set env.LICENSE_SIGNATURE=... --set env.BOOTSTRAP=...
+  --set env.LICENSE_ID="00000000-0000-0000-0000-000000000001" \
+  --set env.LICENSE_CODE="KPOW_CREDIT" \
+  --set env.LICENSEE="Operatr IO\, Inc." \ <-- note the escaped \, character
+  --set env.LICENSE_EXPIRY="2022-01-01" \
+  --set env.LICENSE_SIGNATURE="638......A51" \
+  --set env.BOOTSTRAP="127.0.0.1:9092\,127.0.0.1:9093\,127.0.0.1:9094" \ <-- note the escaped \, characters
+  --set env.SECURITY_PROTOCOL="SASL_PLAINTEXT" \
+  --set env.SASL_MECHANISM="PLAIN" \
+  --set env.SASL_JAAS_CONFIG="org.apache.kafka.common.security.plain.PlainLoginModule required username=\"user\" password=\"secret\";" \ <-- note the quoted quotes
+  --set env.LICENSE_CREDITS="'7'" <-- note the quoted integer
 
 NAME: my-kpow
 LAST DEPLOYED: Mon May 31 17:22:21 2021
@@ -88,7 +106,9 @@ NOTES:
   kubectl --namespace operatr-io port-forward $POD_NAME 3000:3000
 ```
 
-You can also pass an external ConfigMap with environment variables as follows:
+#### Start kPow with config from a ConfigMap
+
+You can configure kPow with a ConfigMap of environment variables as follows:
 
 ```bash
 helm install --namespace operatr-io --create-namespace my-kpow kpow/kpow --set envFromConfigMap=kpow-config
