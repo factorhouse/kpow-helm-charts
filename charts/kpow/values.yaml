@@ -9,13 +9,6 @@ nameOverride: ""
 fullnameOverride: ""
 
 env: {}
-# LICENSE_ID: "replace-me"
-# LICENSE_CODE: "replace-me"
-# LICENSEE: "replace-me"
-# LICENSE_EXPIRY: "replace-me"
-# LICENSE_SIGNATURE: "replace-me"
-# BOOTSTRAP: "replace-with-your-bootstrap-url"
-# RBAC_CONFIGURATION_FILE: /path/to/rbac-config.yaml
 envFromConfigMap: null
 envFromSecret: null
 volumeMounts: []
