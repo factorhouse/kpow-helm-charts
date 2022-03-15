@@ -33,6 +33,7 @@ securityContext: {}
 
 service:
   enabled: true
+  annotations: {}
   type: ClusterIP
   port: 3000
 
