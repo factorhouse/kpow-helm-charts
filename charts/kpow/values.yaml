@@ -42,6 +42,7 @@ ingress:
   annotations: {}
   hosts: []
   tls: []
+  ingressClassName: ""
 
 # We recommend running kPow w/ Guaranteed QOS class and 1 CPU / 2G Memory.
 # Small resource sets (e.g. 1 cluster, 1 schema registry) can likely run with 0.5 CPU / 1G Memory or less.
