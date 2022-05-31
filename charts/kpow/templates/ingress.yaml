@@ -1,9 +1,9 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "kpow.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
-{{- if semverCompare "<1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- if semverCompare "<1.14-0" .Capabilities.KubeVersion.Version -}}
 apiVersion: extensions/v1beta1
-{{- else if semverCompare "<1.19-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- else if semverCompare "<1.19-0" .Capabilities.KubeVersion.Version -}}
 apiVersion: networking.k8s.io/v1beta1
 {{- else -}}
 apiVersion: networking.k8s.io/v1
@@ -30,23 +30,31 @@ spec:
     {{- end }}
   {{- end }}
   rules:
+    {{- if semverCompare "<1.19-0" .Capabilities.KubeVersion.Version -}}
     {{- range .Values.ingress.hosts }}
     - host: {{ .host | quote }}
       http:
         paths:
           {{- range .paths }}
           - path: {{ . }}
-            {{- if semverCompare "<1.19-0" .Capabilities.KubeVersion.GitVersion -}}
             backend:
               serviceName: {{ $fullName }}
               servicePort: {{ $svcPort }}
-            {{- else -}}
+          {{- end }}
+    {{- end }}
+    {{- else -}}
+    {{- range .Values.ingress.hosts }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+          {{- range .paths }}
+          - path: {{ . }}
             backend:
               service:
                 name: {{ $fullName }}
                 port: 
                   number: {{ $svcPort }}
-            {{- end }}
           {{- end }}
     {{- end }}
-  {{- end }}
+    {{- end }}
+{{- end }}
