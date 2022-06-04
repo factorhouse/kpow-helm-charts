@@ -114,7 +114,7 @@ You can configure kPow with a ConfigMap of environment variables as follows:
 helm install --namespace operatr-io --create-namespace my-kpow kpow/kpow --set envFromConfigMap=kpow-config
 ```
 
-See [kpow-config.yaml.example](./kpow/kpow-config.yaml.example) for example environment configuration file.
+See [kpow-config.yaml.example](./charts/kpow/kpow-config.yaml.example) for example environment configuration file.
 
 #### Access the kPow UI
 
