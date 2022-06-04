@@ -85,14 +85,14 @@ Use the following to install from command line:
 helm install --namespace operatr-io --create-namespace my-kpow kpow/kpow \
   --set env.LICENSE_ID="00000000-0000-0000-0000-000000000001" \
   --set env.LICENSE_CODE="KPOW_CREDIT" \
-  --set env.LICENSEE="Operatr IO\, Inc." \ <-- note the escaped \, character
+  --set env.LICENSEE="Operatr IO, Inc." \
   --set env.LICENSE_EXPIRY="2022-01-01" \
   --set env.LICENSE_SIGNATURE="638......A51" \
-  --set env.BOOTSTRAP="127.0.0.1:9092\,127.0.0.1:9093\,127.0.0.1:9094" \ <-- note the escaped \, characters
+  --set env.BOOTSTRAP="127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094" \
   --set env.SECURITY_PROTOCOL="SASL_PLAINTEXT" \
   --set env.SASL_MECHANISM="PLAIN" \
   --set env.SASL_JAAS_CONFIG="org.apache.kafka.common.security.plain.PlainLoginModule required username=\"user\" password=\"secret\";" \ <-- note the quoted quotes
-  --set env.LICENSE_CREDITS="'7'" <-- note the quoted integer
+  --set env.LICENSE_CREDITS="7"
 
 NAME: my-kpow
 LAST DEPLOYED: Mon May 31 17:22:21 2021
@@ -114,7 +114,7 @@ You can configure kPow with a ConfigMap of environment variables as follows:
 helm install --namespace operatr-io --create-namespace my-kpow kpow/kpow --set envFromConfigMap=kpow-config
 ```
 
-See [kpow-config.yaml.example](./kpow-config.yaml.example) for example environment configuration file.
+See [kpow-config.yaml.example](./kpow/kpow-config.yaml.example) for example environment configuration file.
 
 #### Access the kPow UI
 
