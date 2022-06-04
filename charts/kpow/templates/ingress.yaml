@@ -1,6 +1,7 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "kpow.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
+{{- $pathType := .Values.ingress.pathType -}}
 {{- if semverCompare "<1.14-0" .Capabilities.KubeVersion.Version -}}
 apiVersion: extensions/v1beta1
 {{- else if semverCompare "<1.19-0" .Capabilities.KubeVersion.Version -}}
@@ -49,6 +50,7 @@ spec:
         paths:
           {{- range .paths }}
           - path: {{ . }}
+            pathType: {{ $pathType }}
             backend:
               service:
                 name: {{ $fullName }}
