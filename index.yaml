@@ -2,6 +2,29 @@ apiVersion: v1
 entries:
   kpow:
   - apiVersion: v2
+    appVersion: "89.1"
+    created: "2022-08-02T10:59:11.88383049Z"
+    description: Run kPow for Apache Kafka in Kubernetes
+    digest: 8af640de4391eb69dec4be854aff78f0c63228486a45277548cae95584b20ca5
+    home: https://kpow.io
+    keywords:
+    - kafka
+    - kafka-ui
+    - kafka-connect
+    - schema-registry
+    - monitoring
+    maintainers:
+    - email: support@operatr.io
+      name: Operatr.IO Support
+    name: kpow
+    sources:
+    - https://github.com/operatr-io/kpow
+    - https://github.com/operatr-io/kpow-helm-charts/
+    type: application
+    urls:
+    - https://github.com/operatr-io/kpow-helm-charts/releases/download/kpow-1.0.36/kpow-1.0.36.tgz
+    version: 1.0.36
+  - apiVersion: v2
     appVersion: "89"
     created: "2022-07-29T06:37:35.887702474Z"
     description: Run kPow for Apache Kafka in Kubernetes
@@ -668,4 +691,4 @@ entries:
     urls:
     - https://github.com/operatr-io/kpow-helm-charts/releases/download/kpow-1.0.7/kpow-1.0.7.tgz
     version: 1.0.7
-generated: "2022-07-29T06:37:35.888160879Z"
+generated: "2022-08-02T10:59:11.884494389Z"
