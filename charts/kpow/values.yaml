@@ -44,14 +44,14 @@ ingress:
   tls: []
   ingressClassName: ""
 
-# We recommend running kPow w/ Guaranteed QOS class and 1 CPU / 2G Memory.
-# Small resource sets (e.g. 1 cluster, 1 schema registry) can likely run with 0.5 CPU / 1G Memory or less.
+# We recommend running kPow w/ Guaranteed QOS class and 2 CPU / 4G Memory.
+# Small resource sets (e.g. 1 cluster, 1 schema registry, 1 connect cluster) can likely run with 1 CPU / 2G Memory.
 resources:
   limits:
-    cpu: 1
+    cpu: 2
     memory: 4Gi
   requests:
-    cpu: 1
+    cpu: 2
     memory: 4Gi
 
 autoscaling:
