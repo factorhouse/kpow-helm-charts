@@ -62,13 +62,13 @@ spec:
             httpGet:
               path: /up
               port: http
-            initialDelaySeconds: 60
+            initialDelaySeconds: 90
             periodSeconds: 30
           livenessProbe:
             httpGet:
               path: /healthy
               port: http
-            initialDelaySeconds: 60
+            initialDelaySeconds: 120
             periodSeconds: 30
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
