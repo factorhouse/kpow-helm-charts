@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "kpow.fullname" . }}
+  namespace: "{{ .Release.Namespace }}"
   labels:
     {{- include "kpow.labels" . | nindent 4 }}
 spec:
@@ -61,8 +62,8 @@ spec:
             httpGet:
               path: /up
               port: http
-            initialDelaySeconds: 30
-            periodSeconds: 10
+            initialDelaySeconds: 60
+            periodSeconds: 30
           livenessProbe:
             httpGet:
               path: /healthy

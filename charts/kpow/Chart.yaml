@@ -3,7 +3,7 @@ name: kpow
 description: Run kPow for Apache Kafka in Kubernetes
 type: application
 version: 1.0.39
-appVersion: "89.4"
+appVersion: "90.1"
 keywords:
   - kafka
   - kafka-ui
@@ -12,8 +12,8 @@ keywords:
   - monitoring
 home: "https://kpow.io"
 sources:
-  - "https://github.com/operatr-io/kpow"
-  - "https://github.com/operatr-io/kpow-helm-charts/"
+  - "https://github.com/factorhouse/kpow"
+  - "https://github.com/factorhouse/kpow-helm-charts/"
 maintainers:
-  - name: "Operatr.IO Support"
-    email: "support@operatr.io"
+  - name: "Factor House Support"
+    email: "support@factorhouse.io"
