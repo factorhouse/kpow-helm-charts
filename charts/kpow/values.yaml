@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: operatr/kpow
+  repository: factorhouse/kpow-ee
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
