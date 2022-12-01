@@ -2,7 +2,7 @@
 
 [Kpow](https://kpow.io) is the all-in-one toolkit to manage, monitor, and learn about your Kafka resources.
 
-This Helm chart uses the [operatr/kpow](https://hub.docker.com/r/operatr/kpow) container from Dockerhub.
+This Helm chart uses the [factorhouse/kpow-ee](https://hub.docker.com/r/factorhouse/kpow-ee) container from Dockerhub.
 
 ## Prerequisites
 
@@ -75,10 +75,10 @@ https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of-set
 Use the following to install from command line:
 
 ```bash
-helm install --namespace operatr-io --create-namespace my-kpow kpow/kpow \
+helm install --namespace factorhouse --create-namespace kpow kpow/kpow \
   --set env.LICENSE_ID="00000000-0000-0000-0000-000000000001" \
   --set env.LICENSE_CODE="KPOW_CREDIT" \
-  --set env.LICENSEE="Operatr IO\, Inc." \ <-- note the quoted comma
+  --set env.LICENSEE="Factor House\, Inc." \ <-- note the quoted comma
   --set env.LICENSE_EXPIRY="2022-01-01" \
   --set env.LICENSE_SIGNATURE="638......A51" \
   --set env.BOOTSTRAP="127.0.0.1:9092\,127.0.0.1:9093\,127.0.0.1:9094" \ <-- note the quoted commas
@@ -87,16 +87,16 @@ helm install --namespace operatr-io --create-namespace my-kpow kpow/kpow \
   --set env.SASL_JAAS_CONFIG="org.apache.kafka.common.security.plain.PlainLoginModule required username=\"user\" password=\"secret\";" \ <-- note the quoted quotes
   --set env.LICENSE_CREDITS="7"
   
-NAME: my-kpow
+NAME: kpow
 LAST DEPLOYED: Mon May 31 17:22:21 2021
-NAMESPACE: operatr-io
+NAMESPACE: factorhouse
 STATUS: deployed
 REVISION: 1
 NOTES:
 1. Get the application URL by running these commands:
-  export POD_NAME=$(kubectl get pods --namespace operatr-io -l "app.kubernetes.io/name=kpow,app.kubernetes.io/instance=my-kpow" -o jsonpath="{.items[0].metadata.name}")
+  export POD_NAME=$(kubectl get pods --namespace factorhouse -l "app.kubernetes.io/name=kpow,app.kubernetes.io/instance=kpow" -o jsonpath="{.items[0].metadata.name}")
   echo "Visit http://127.0.0.1:3000 to use your application"
-  kubectl --namespace operatr-io port-forward $POD_NAME 3000:3000
+  kubectl --namespace factorhouse port-forward $POD_NAME 3000:3000
 ```
 
 #### Start Kpow with config from a ConfigMap
@@ -104,7 +104,7 @@ NOTES:
 You can configure Kpow with a ConfigMap of environment variables as follows:
 
 ```bash
-helm install --namespace operatr-io --create-namespace my-kpow kpow/kpow --set envFromConfigMap=kpow-config
+helm install --namespace factorhouse --create-namespace kpow kpow/kpow --set envFromConfigMap=kpow-config
 ```
 
 See [kpow-config.yaml.example](./kpow-config.yaml.example) for example environment configuration file.
@@ -114,9 +114,9 @@ See [kpow-config.yaml.example](./kpow-config.yaml.example) for example environme
 Follow the instructions in the notes to configure port forwarding.
 
 ```bash
-export POD_NAME=$(kubectl get pods --namespace operatr-io -l "app.kubernetes.io/name=kpow,app.kubernetes.io/instance=my-kpow" -o jsonpath="{.items[0].metadata.name}")
+export POD_NAME=$(kubectl get pods --namespace factorhouse -l "app.kubernetes.io/name=kpow,app.kubernetes.io/instance=kpow" -o jsonpath="{.items[0].metadata.name}")
 echo "Visit http://127.0.0.1:3000 to use your application"
-kubectl --namespace operatr-io port-forward $POD_NAME 3000:3000
+kubectl --namespace factorhouse port-forward $POD_NAME 3000:3000
 ```
 
 Kpow is now available on [http://127.0.0.1:3000](http://127.0.0.1:3000).
@@ -124,14 +124,14 @@ Kpow is now available on [http://127.0.0.1:3000](http://127.0.0.1:3000).
 #### Check the Kpow Pod
 
 ```bash
-kubectl describe pods --namespace operatr-io
+kubectl describe pods --namespace factorhouse
 
-Name:         my-kpow-9988df6b6-vvf8z
-Namespace:    operatr-io
+Name:         kpow-9988df6b6-vvf8z
+Namespace:    factorhouse
 Priority:     0
 Node:         ip-172-31-33-42.ap-southeast-2.compute.internal/172.31.33.42
 Start Time:   Mon, 31 May 2021 17:22:22 +1000
-Labels:       app.kubernetes.io/instance=my-kpow
+Labels:       app.kubernetes.io/instance=kpow
               app.kubernetes.io/name=kpow
               pod-template-hash=9988df6b6
 Annotations:  kubernetes.io/psp: eks.privileged
@@ -141,7 +141,7 @@ Status:       Running
 #### View the Kpow Pod Logs
 
 ```bash
-kubectl logs --namespace operatr-io my-kpow-9988df6b6-vvf8z 
+kubectl logs --namespace factorhouse kpow-9988df6b6-vvf8z 
 
 11:36:49.111 INFO  [main] operatr.system ? start Kpow
 ...
@@ -150,12 +150,12 @@ kubectl logs --namespace operatr-io my-kpow-9988df6b6-vvf8z
 #### Remove Kpow
 
 ```bash
-helm delete --namespace operatr-io my-kpow
+helm delete --namespace factorhouse kpow
 ```
 
 ### Get Help!
 
-If you have any issues or errors, please contact support@operatr.io.
+If you have any issues or errors, please contact support@factorhouse.io.
 
 ### Licensing and Modifications
 
