@@ -44,15 +44,19 @@ ingress:
   tls: []
   ingressClassName: ""
 
-# We recommend running kPow w/ Guaranteed QOS class and 1 CPU / 4G Memory.
-# Small resource sets (e.g. 1 cluster, 1 schema registry, 1 connect cluster) can likely run with 1 CPU / 2G Memory.
+# We recommend running kPow w/ Guaranteed QOS
+# The default resource limit/requests are suitable for a multi-cluster installation (up to 12 Kafka Clusters + Connect + Schema).
+# For a smaller installation (up to 6 clusters) you can modify to 1CPU, 4GB heap, monitor performance afterwards and adjust as necessary.
+# For a single cluster you can modify to 0.5CPU, 2GB heap, monitor performance afterwards and adjust as necessary.
+# These resources also depend on the size of the clusters (number of brokers/topics/groups in particular).
+# The default settings are suitable for even the largest single cluster installation. For tuning assistance contact support@factorhouse.io
 resources:
   limits:
-    cpu: 1
-    memory: 4Gi
+    cpu: 2
+    memory: 8Gi
   requests:
-    cpu: 1
-    memory: 4Gi
+    cpu: 2
+    memory: 8Gi
 
 autoscaling:
   enabled: false
