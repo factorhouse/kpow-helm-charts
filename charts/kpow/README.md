@@ -113,7 +113,7 @@ See [kpow-config.yaml.example](./kpow-config.yaml.example) for an example Config
 
 #### Set the $POD_NAME variable and test the Kpow UI
 
-Follow the instructions in the notes to set the $POD_NAME variable and configure port forwarding to test the Kpow UI.
+Follow the notes instructions to set the $POD_NAME variable and configure port forwarding to the Kpow UI.
 
 ```bash
 export POD_NAME=$(kubectl get pods --namespace factorhouse -l "app.kubernetes.io/name=kpow,app.kubernetes.io/instance=kpow" -o jsonpath="{.items[0].metadata.name}")
