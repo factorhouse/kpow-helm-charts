@@ -101,17 +101,19 @@ NOTES:
 
 #### Start Kpow with config from a ConfigMap
 
+This approach expects a ConfigMap to be available within the factorhouse namespace in kube, to understand how to configure Kpow with a local ConfigMap template see [Start Kpow with Local Changes](#start-kpow-with-local-changes).
+
 You can configure Kpow with a ConfigMap of environment variables as follows:
 
 ```bash
 helm install --namespace factorhouse --create-namespace kpow kpow/kpow --set envFromConfigMap=kpow-config
 ```
 
-See [kpow-config.yaml.example](./kpow-config.yaml.example) for example environment configuration file.
+See [kpow-config.yaml.example](./kpow-config.yaml.example) for an example ConfigMap file.
 
-#### Access the Kpow UI
+#### Set the $POD_NAME variable and test the Kpow UI
 
-Follow the instructions in the notes to configure port forwarding.
+Follow the instructions in the notes to set the $POD_NAME variable and configure port forwarding to test the Kpow UI.
 
 ```bash
 export POD_NAME=$(kubectl get pods --namespace factorhouse -l "app.kubernetes.io/name=kpow,app.kubernetes.io/instance=kpow" -o jsonpath="{.items[0].metadata.name}")
@@ -141,7 +143,7 @@ Status:       Running
 #### View the Kpow Pod Logs
 
 ```bash
-kubectl logs --namespace factorhouse kpow-9988df6b6-vvf8z 
+kubectl logs --namespace factorhouse $POD_NAME 
 
 11:36:49.111 INFO  [main] operatr.system ? start Kpow
 ...
@@ -152,6 +154,82 @@ kubectl logs --namespace factorhouse kpow-9988df6b6-vvf8z
 ```bash
 helm delete --namespace factorhouse kpow
 ```
+
+### Start Kpow with Local Changes
+
+You can run Kpow with local edits to these charts and provide local configuration when running Kpow.
+
+#### Pull and Untar the Kpow Charts
+
+```bash
+helm pull kpow/kpow --untar --untardir .
+```
+
+#### Make Local Edits
+
+Make any edits required to `kpow/Chart.yaml` or `kpow/values.yaml` (adding volume mounts, etc).
+
+#### Run Local Charts
+
+The command to run local charts is slightly different, see `./kpow` rather than `kpow/kpow`.
+
+```bash
+helm install --namespace factorhouse --create-namespace kpow ./kpow <.. --set configuration, etc ..>
+```
+
+#### Run with Local ConfigMap Configuration
+
+See [kpow-config.yaml.example](./kpow-config.yaml.example) for an example ConfigMap file.
+
+Place your local ConfigMap in the `./kpow/templates/` directory.
+
+Your local ConfigMap can then be referenced with `--set envFromConfigMap=kpow-config`.
+
+```bash
+helm install --namespace factorhouse --create-namespace kpow ./kpow --set envFromConfigMap=kpow-config
+```
+
+### Kpow Memory and CPU Requirements
+
+These charts run Kpow with Guaranteed QoS, having resource request and limit set to these values by default:
+
+```yaml
+resources:
+  limits:
+    cpu: 2
+    memory: 8Gi
+  requests:
+    cpu: 2
+    memory: 8Gi
+```
+
+These default resource settings are conservative, suited to a deployment of Kpow that manages multiple Kafka clusters and associated resources.
+
+When running Kpow with a single Kafka cluster you can experiment with reducing those resources as far as our suggested minimum:
+
+#### Minimum Resource Requirements
+
+```yaml
+resources:
+  limits:
+    cpu: 1
+    memory: 2Gi
+  requests:
+    cpu: 1
+    memory: 2Gi
+```
+
+Adjust these values from the command line like so:
+
+```bash
+helm install --namespace factorhouse --create-namespace kpow kpow/kpow \
+     --set resources.limits.cpu=1 \
+     --set resources.limits.memory=2Gi \
+     --set resources.requests.cpu=1 \
+     --set resources.requests.memory=2Gi
+```
+
+We recommend always having limits and requests set to the same value, as this set Kpow in Guaranteed QoS and provides a much more reliable operation.
 
 ### Get Help!
 

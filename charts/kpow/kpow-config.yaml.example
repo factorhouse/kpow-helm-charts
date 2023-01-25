@@ -37,56 +37,55 @@ data:
 
   ## Optional Kafka Cluster Configuration
 
-  # SECURITY_PROTOCOL: SASL_SSL
-  # SASL_MECHANISM: PLAIN
+  # SECURITY_PROTOCOL: "SASL_SSL"
+  # SASL_MECHANISM: "PLAIN"
   # SASL_JAAS_CONFIG: "org.apache.kafka.common.security.plain.Plain.."
   # SASL_LOGIN_CALLBACK_HANDLER_CLASS: "com.corp.kafka.security.sasl.oauth.KafkaBrokerTokenCreator"
   # SSL_KEYSTORE_LOCATION: "/ssl/kafka.keystore.jks"
   # SSL_KEYSTORE_PASSWORD: "keystore-pass-123"
   # SSL_KEY_PASSWORD: "key-pass-123"
-  # SSL_KEYSTORE_TYPE: JKS
-  # SSL_KEYMANAGER_ALGORITHM: SunX509
+  # SSL_KEYSTORE_TYPE: "JKS"
+  # SSL_KEYMANAGER_ALGORITHM: "SunX509"
   # SSL_TRUSTSTORE_LOCATION: "/ssl/kafka.truststore.jks"
   # SSL_TRUSTSTORE_PASSWORD: "trust-pass-123"
-  # SSL_TRUSTSTORE_TYPE: JKS
-  # SSL_TRUSTMANAGER_ALGORITHM: PKIX
-  # SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: https
-  # SSL_PROVIDER: default
-  # SSL_CIPHER_SUITES: default
-  # SSL_PROTOCOL: TLS
+  # SSL_TRUSTSTORE_TYPE: "JKS"
+  # SSL_TRUSTMANAGER_ALGORITHM: "PKIX"
+  # SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: "https"
+  # SSL_PROVIDER: "default"
+  # SSL_CIPHER_SUITES: "default"
+  # SSL_PROTOCOL: "TLS"
   # SSL_ENABLED_PROTOCOLS: "TLSv.12,TLSv1.1,TLSv1"
-  # SSL_SECURE_RANDOM_IMPLEMENTATION: SHA1PRNG
+  # SSL_SECURE_RANDOM_IMPLEMENTATION: "SHA1PRNG"
 
   ## Schema Registry Configuration
 
-  # SCHEMA_REGISTRY_URL: https://registry-host
-  # SCHEMA_REGISTRY_AUTH: USER_INFO
-  # SCHEMA_REGISTRY_USER: registry-user
-  # SCHEMA_REGISTRY_PASSWORD: registry-pass
-  # SCHEMA_REGISTRY_NAME: registry-label (optional)
+  # SCHEMA_REGISTRY_URL: "https://registry-host"
+  # SCHEMA_REGISTRY_AUTH: "USER_INFO"
+  # SCHEMA_REGISTRY_USER: "registry-user"
+  # SCHEMA_REGISTRY_PASSWORD: "registry-pass"
+  # SCHEMA_REGISTRY_NAME: "registry-label" (optional)
 
   ## Kafka Connect Configuration
 
-  # CONNECT_REST_URL: http://localhost:8083
-  # CONNECT_AUTH: BASIC (optional)
-  # CONNECT_BASIC_AUTH_USER: connect-user (optional)
-  # CONNECT_BASIC_AUTH_PASS: connect-pass (optional)
-  # CONNECT_GROUP_ID: connect-group-id (optional)
-  # CONNECT_OFFSET_STORAGE_TOPIC: connect-topic (optional)
+  # CONNECT_REST_URL: "http://localhost:8083"
+  # CONNECT_AUTH: "BASIC" (optional)
+  # CONNECT_BASIC_AUTH_USER: "connect-user" (optional)
+  # CONNECT_BASIC_AUTH_PASS: "connect-pass" (optional)
+  # CONNECT_GROUP_ID: "connect-group-id" (optional)
+  # CONNECT_OFFSET_STORAGE_TOPIC: "connect-topic" (optional)
 
   ### System Configuration
 
-  # PORT: 3000 - the port to serve content
-  # REPLICATION_FACTOR: 3 - the replication factor of internal kpow topics (reduce if you have fewer than 3 brokers)
-  # SNAPSHOT_PARALLELISM: 3 - the parallelism of kpow snapshot execution (increase for very big resource-sets)
-  # SHOW_SPLASH: true - turn on/off the initial splash screen for new user sessions
+  # PORT: "3000" - the port to serve content
+  # REPLICATION_FACTOR: "3" - the replication factor of internal kpow topics (reduce if you have fewer than 3 brokers)
+  # SNAPSHOT_PARALLELISM: "3" - the parallelism of kpow snapshot execution (increase for very big resource-sets)
 
   ### Live Mode Configuration
 
-  # LIVE_MODE_ENABLED=true
-  # LIVE_MODE_PERIOD_MS=60000
-  # LIVE_MODE_INTERVAL_MS=5000
-  # LIVE_MODE_MAX_CONCURRENT_USERS=2
+  # LIVE_MODE_ENABLED="true"
+  # LIVE_MODE_PERIOD_MS="60000"
+  # LIVE_MODE_INTERVAL_MS="5000"
+  # LIVE_MODE_MAX_CONCURRENT_USERS="2"
 
   ## System HTTPS Configuration
 
@@ -134,11 +133,11 @@ data:
 
   ## Data Policy (Masking / Redaction) Configuration
 
-  # DATA_POLICY_CONFIGURATION_FILE: /opt/kpow/data-config.yml
+  # DATA_POLICY_CONFIGURATION_FILE: "/opt/kpow/data-config.yml"
 
   ## Slack Integration (Send Audit Log records to a Slack channel)
 
-  # SLACK_WEBHOOK_URL: https://hooks.slack.com/services/...
+  # SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/..."
 
   ## Okta SSO (OpenID)
 
