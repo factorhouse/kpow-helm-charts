@@ -22,6 +22,8 @@ This repository contains a single Helm chart that uses the [factorhouse/kpow-ee]
   * [Start a Kpow Instance](#start-a-kpow-instance)
   * [Manage a Kpow Instance](#manage-a-kpow-instance)
   * [Start Kpow with Local Changes](#start-kpow-with-local-changes)
+  * [Manage Sensitive Environment Variables](#manage-sensitive-environment-variables)
+  * [Provide Files to the Kpow Pod](#provide-files-to-the-kpow-pod)
   * [Kpow Memory and CPU Requirements](#kpow-memory-and-cpu-requirements)
   
 ## Prerequisites
@@ -121,13 +123,13 @@ NOTES:
 
 #### Start Kpow with config from a ConfigMap
 
-This approach expects a ConfigMap to be available within the factorhouse namespace in kube, to understand how to configure Kpow with a local ConfigMap template see [Start Kpow with Local Changes](#start-kpow-with-local-changes). 
-
 You can configure Kpow with a ConfigMap of environment variables as follows:
 
 ```bash
 helm install --namespace factorhouse --create-namespace kpow kpow/kpow --set envFromConfigMap=kpow-config
 ```
+
+This approach expects a ConfigMap to be available within the factorhouse namespace in kube, to understand how to configure Kpow with a local ConfigMap template see [Start Kpow with Local Changes](#start-kpow-with-local-changes).
 
 See [kpow-config.yaml.example](./charts/kpow/kpow-config.yaml.example) for an example ConfigMapfile.
 
@@ -210,6 +212,40 @@ Your local ConfigMap can then be referenced with `--set envFromConfigMap=kpow-co
 ```bash
 helm install --namespace factorhouse --create-namespace kpow ./kpow --set envFromConfigMap=kpow-config
 ```
+
+### Manage Sensitive Environment Variables
+
+This helm chart accepts the name of a secret containing sensitive parameters, e.g.
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kpow-secrets
+data:
+  SASL_JAAS_CONFIG: a3JnLmFwYWNoXS5rYWZrYS5jb21tb24uc2VjdXJpdHkucGxhaW4uUGxhaW5Mb2dpbk2vZHVsZSByZXF1aXJiZCB1c2VybmFtZT0iTFQ1V0ZaV1BRWUpHNzRJQyIgcGFzc3dvcmQ9IjlYUFVYS3BLYUQxYzVJdXVNRjRPKzZ2NxJ0a1E4aS9yWUp6YlppdlgvZnNiTG51eGY4SnlFT1dUeXMvTnJ1bTAiBwo=
+  CONFLUENT_API_SECRET: NFJSejlReFNTTXlTcGhXdjNLMHNYY1F6UGNURmdadlNYT0ZXSXViWFJySmx2N3A2WStSenROQnVpYThvNG1NSRo=
+```
+
+```bash
+kubectl apply -f ./kpow-secrets.yaml --namespace factorhouse
+```
+
+Then run the helm chart (this can be used in conjunction with `envFromConfigMap`)
+
+```bash
+helm install --namespace factorhouse --create-namespace kpow ./kpow --set envFromSecret=kpow-secrets --set envFromConfigMap=kpow-config
+```
+
+### Provide Files to the Kpow Pod
+
+There are occasions where you must provide files to the Kpow Pod in order for Kpow to run correctly, such files include:
+
+* RBAC configuration
+* SSL Keystores
+* SSL Truststores
+
+How you provide these files is down to user preference, we are not able to provide any support or instruction in this regard.
 
 ### Kpow Memory and CPU Requirements
 
