@@ -121,7 +121,7 @@ NOTES:
   kubectl --namespace factorhouse port-forward $POD_NAME 3000:3000
 ```
 
-#### Start Kpow with config from a ConfigMap
+#### Start Kpow with Environment Variables from a ConfigMap
 
 You can configure Kpow with a ConfigMap of environment variables as follows:
 
@@ -132,6 +132,8 @@ helm install --namespace factorhouse --create-namespace kpow kpow/kpow --set env
 This approach expects a ConfigMap to be available within the factorhouse namespace in kube, to understand how to configure Kpow with a local ConfigMap template see [Start Kpow with Local Changes](#start-kpow-with-local-changes).
 
 See [kpow-config.yaml.example](./charts/kpow/kpow-config.yaml.example) for an example ConfigMapfile.
+
+See the Kubernetes documentation on [configuring all key value pairs in a config map as environment variables](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables) for more information.
 
 ### Manage a Kpow Instance
 
@@ -232,6 +234,8 @@ kubectl apply -f ./kpow-secrets.yaml --namespace factorhouse
 ```
 
 Then run the helm chart (this can be used in conjunction with `envFromConfigMap`)
+
+See the Kubernetes documentation on [configuring all key value pairs in a secret as environment variables](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#configure-all-key-value-pairs-in-a-secret-as-container-environment-variables) for more information.
 
 ```bash
 helm install --namespace factorhouse --create-namespace kpow ./kpow --set envFromSecret=kpow-secrets --set envFromConfigMap=kpow-config
