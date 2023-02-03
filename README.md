@@ -205,8 +205,6 @@ helm install --namespace factorhouse --create-namespace kpow ./kpow <.. --set co
 
 #### Run with Local ConfigMap Configuration
 
-See [kpow-config.yaml.example](./charts/kpow/kpow-config.yaml.example) for an example ConfigMap file.
-
 Place your local ConfigMap in the `./kpow/templates/` directory.
 
 Your local ConfigMap can then be referenced with `--set envFromConfigMap=kpow-config`.
@@ -214,6 +212,10 @@ Your local ConfigMap can then be referenced with `--set envFromConfigMap=kpow-co
 ```bash
 helm install --namespace factorhouse --create-namespace kpow ./kpow --set envFromConfigMap=kpow-config
 ```
+
+See [kpow-config.yaml.example](./charts/kpow/kpow-config.yaml.example) for an example ConfigMap file.
+
+See the Kubernetes documentation on [configuring all key value pairs in a config map as environment variables](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables) for more information.
 
 ### Manage Sensitive Environment Variables
 
@@ -250,6 +252,8 @@ There are occasions where you must provide files to the Kpow Pod in order for Kp
 * SSL Truststores
 
 How you provide these files is down to user preference, we are not able to provide any support or instruction in this regard.
+
+You may find the Kubernetes documentation on [injecting data into applications](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume) useful.
 
 ### Kpow Memory and CPU Requirements
 
