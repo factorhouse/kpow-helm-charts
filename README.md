@@ -84,7 +84,7 @@ See the [Kpow Documentation](https://docs.kpow.io) for a full list of configurat
 
 ##### Quotation #####
 
-Some fields require quoting of characters within the value-string when using --set env.XXX to pass configuration .
+Some fields require quoting of characters within the value-string when using --set env.XXX to pass configuration.
 
 This particularly applies to commas, integers, and quotation marks (see examples below).
 
