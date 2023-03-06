@@ -2,6 +2,30 @@ apiVersion: v1
 entries:
   kpow:
   - apiVersion: v2
+    appVersion: "91.1"
+    created: "2023-03-06T10:22:06.481594908Z"
+    description: Run kPow for Apache Kafka in Kubernetes
+    digest: bc585062da34fbe7cede4f911f8607f385445cab5ffd075408086388b6ff7b32
+    home: https://kpow.io
+    keywords:
+    - kafka
+    - kafka-ui
+    - kafka-connect
+    - schema-registry
+    - ksqldb
+    - monitoring
+    maintainers:
+    - email: support@factorhouse.io
+      name: Factor House Support
+    name: kpow
+    sources:
+    - https://github.com/factorhouse/kpow
+    - https://github.com/factorhouse/kpow-helm-charts/
+    type: application
+    urls:
+    - https://github.com/factorhouse/kpow-helm-charts/releases/download/kpow-1.0.46/kpow-1.0.46.tgz
+    version: 1.0.46
+  - apiVersion: v2
     appVersion: "90.6"
     created: "2023-01-26T06:52:50.993812639Z"
     description: Run kPow for Apache Kafka in Kubernetes
@@ -898,4 +922,4 @@ entries:
     urls:
     - https://github.com/operatr-io/kpow-helm-charts/releases/download/kpow-1.0.7/kpow-1.0.7.tgz
     version: 1.0.7
-generated: "2023-01-26T06:52:50.994278443Z"
+generated: "2023-03-06T10:22:06.482258806Z"
