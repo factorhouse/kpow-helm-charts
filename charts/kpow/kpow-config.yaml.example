@@ -6,10 +6,10 @@ data:
 
   ### See https://docs.kpow.io for full configuration and installation guides
 
-  ### Note: The simplest kPow configuration requires only LICENSE_* and BOOTSTRAP.
+  ### Note: The simplest Kpow configuration requires only LICENSE_* and BOOTSTRAP.
 
   ### License Configuration (https://kpow.io/try <- 30 day trial licenses available)
-  ### Note: If using the AWS Marketplace kPow Container you do not need to supply LICENSE* parameters
+  ### Note: If using the AWS Marketplace Kpow Container you do not need to supply LICENSE* parameters
   ###       (https://aws.amazon.com/marketplace/seller-profile?id=ab356f1d-3394-4523-b5d4-b339e3cca9e0)
 
   LICENSE_ID: "replace-me"
@@ -20,18 +20,18 @@ data:
 
   ### Resource Set Configuration
 
-  ### kPow manages sets of Kafka resources. Clusters, Schema Registries and Kafka Connect Installations.
+  ### Kpow manages sets of Kafka resources. Clusters, Schema Registries and Kafka Connect Installations.
   ### To configure multiple kafka resources prepend environment variables with _2, _3, etc.
   ### Resources with the same set-id are considered related.
   ###   E.g. cluster with BOOTSTRAP_2 can decode messages from with registry SCHEMA_REGISTRY_URL_2.
 
-  ## Optional Resource Set Name (this is displayed in the kPow UI for each set of resources)
+  ## Optional Resource Set Name (this is displayed in the Kpow UI for each set of resources)
 
   ENVIRONMENT_NAME: "Change Me"
 
   ## Kafka Cluster Configuration
   ## Required parameters for configuring a Kafka Cluster
-  ## You must configure at least one Kafka Booktstrap to use kPow.
+  ## You must configure at least one Kafka Booktstrap to use Kpow.
 
   BOOTSTRAP: "replace-with-your-bootstrap-url"
 

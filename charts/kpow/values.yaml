@@ -44,7 +44,7 @@ ingress:
   tls: []
   ingressClassName: ""
 
-# We recommend running kPow w/ Guaranteed QOS
+# We recommend running Kpow w/ Guaranteed QOS
 # The default resource limit/requests are suitable for a multi-cluster installation (up to 12 Kafka Clusters + Connect + Schema).
 # For a smaller installation (up to 6 clusters) you can modify to 1CPU, 4GB heap, monitor performance afterwards and adjust as necessary.
 # For a single cluster you can modify to 0.5CPU, 2GB heap, monitor performance afterwards and adjust as necessary.
