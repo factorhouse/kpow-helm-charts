@@ -5,6 +5,7 @@ metadata:
   namespace: "{{ .Release.Namespace }}"
   labels:
     {{- include "kpow.labels" . | nindent 4 }}
+    {{- include "kpow.providedLabels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -20,6 +21,7 @@ spec:
     {{- end }}
       labels:
         {{- include "kpow.selectorLabels" . | nindent 8 }}
+        {{- include "kpow.providedLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

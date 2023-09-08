@@ -52,6 +52,15 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Provided labels
+*/}}
+{{- define "kpow.providedLabels" -}}
+{{- if .Values.labels }}
+{{- toYaml .Values.labels }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "kpow.serviceAccountName" -}}
