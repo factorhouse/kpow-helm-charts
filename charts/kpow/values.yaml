@@ -74,10 +74,14 @@ affinity: {}
 labels: {}
 
 serviceMonitor:
-  enabled: false
-  schemas: []
-  topics: []
-  clusters: []
+  enabled: true
+  metrics:
+    clusters: []
+    schemas: []
+  offsets:
+    groups: false
+    topics: []
+    clusters: []
   labels: {}
   jobLabel: null
   namespaceSelector: {}

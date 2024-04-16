@@ -72,11 +72,11 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
-Verify if all metrics should be exported
+If all metrics should be exported
 */}}
 {{- define "kpow.monitor.exportAllMetrics" -}}
-{{- with .Values.serviceMonitor }}
-{{- if and (eq (len .topics) 0) (eq (len .clusters) 0) (eq (len .schemas) 0) }}
+{{- with .Values.serviceMonitor.metrics }}
+{{- if and (eq (len .clusters) 0) (eq (len .schemas) 0) }}
 {{- print true }}
 {{- else }}
 {{- print false }}
@@ -85,10 +85,10 @@ Verify if all metrics should be exported
 {{- end }}
 
 {{/*
-Verify if all offset and cluster metrics should be exported
+If all offsets should be exported
 */}}
-{{- define "kpow.monitor.exportAllOffsetAndClusterMetrics" -}}
-{{- with .Values.serviceMonitor }}
+{{- define "kpow.monitor.exportAllOffsets" -}}
+{{- with .Values.serviceMonitor.offsets }}
 {{- if and (eq (len .topics) 0) (eq (len .clusters) 0) }}
 {{- print true }}
 {{- else }}
