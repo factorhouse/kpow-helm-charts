@@ -74,7 +74,7 @@ affinity: {}
 labels: {}
 
 serviceMonitor:
-  enabled: true
+  enabled: false
   metrics:
     clusters: []
     schemas: []
