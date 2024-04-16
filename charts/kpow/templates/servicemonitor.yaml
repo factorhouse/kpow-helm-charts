@@ -21,6 +21,8 @@ spec:
       {{- end }}
     {{- end }}
     {{- if eq (include "kpow.monitor.exportAllOffsets" .) "true" }}
+      {{- include "kpow.monitor.endpoint" (list "/offsets/v1" .Values) | nindent 4 }}
+    {{- else }}
       {{- range .Values.serviceMonitor.offsets.topics }}
         {{- $topicEndpoint := printf "/offsets/v1/topic/%s" . }}
         {{- include "kpow.monitor.endpoint" (list $topicEndpoint $.Values) | nindent 4 }}

@@ -79,7 +79,7 @@ serviceMonitor:
     clusters: []
     schemas: []
   offsets:
-    groups: false
+    groups: true
     topics: []
     clusters: []
   labels: {}
