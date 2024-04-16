@@ -79,6 +79,6 @@ serviceMonitor:
   topics: []
   clusters: []
   labels: {}
-  jobLabel: {}
+  jobLabel: null
   namespaceSelector: {}
   selector: {}

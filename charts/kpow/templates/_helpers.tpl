@@ -77,9 +77,9 @@ Verify if all metrics should be exported
 {{- define "kpow.monitor.exportAllMetrics" -}}
 {{- with .Values.serviceMonitor }}
 {{- if and (eq (len .topics) 0) (eq (len .clusters) 0) (eq (len .schemas) 0) }}
-{{- true }}
+{{- print true }}
 {{- else }}
-{{- false }}
+{{- print false }}
 {{- end }}
 {{- end }}
 {{- end }}
@@ -90,9 +90,9 @@ Verify if all offset and cluster metrics should be exported
 {{- define "kpow.monitor.exportAllOffsetAndClusterMetrics" -}}
 {{- with .Values.serviceMonitor }}
 {{- if and (eq (len .topics) 0) (eq (len .clusters) 0) }}
-{{- true }}
+{{- print true }}
 {{- else }}
-{{- false }}
+{{- print false }}
 {{- end }}
 {{- end }}
 {{- end }}
@@ -101,8 +101,9 @@ Verify if all offset and cluster metrics should be exported
 Generate service monitor endpoint
 */}}
 {{- define "kpow.monitor.endpoint" -}}
-{{- $endpoint := $1 }}
-- interval: {{ .Values.serviceMonitor.interval | default "15s" }}
-  port: {{ .Values.service.port }}
+{{- $endpoint := index . 0 }}
+{{- $values := index . 1 }}
+- interval: {{ $values.serviceMonitor.interval | default "15s" }}
+  port: {{ $values.service.port }}
   path: {{ $endpoint }}
 {{- end }}
