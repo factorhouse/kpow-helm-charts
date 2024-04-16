@@ -9,7 +9,7 @@ spec:
   endpoints:
     {{- if (include "kpow.monitor.exportAllMetrics" .)}}
       {{- include "kpow.monitor.endpoint" "/metrics/v1" }}
-    {{- elif (include "kpow.monitor.exportAllOffsetAndClusterMetrics" .) }}
+    {{- else if (include "kpow.monitor.exportAllOffsetAndClusterMetrics" .) }}
       {{- range .Values.serviceMonitor.schemas}}
         {{- include "kpow.monitor.endpoint" (printf "/metrics/v1/schema/%s" .) }}
       {{- end }}
