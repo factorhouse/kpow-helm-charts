@@ -72,3 +72,13 @@ tolerations: []
 affinity: {}
 
 labels: {}
+
+serviceMonitor:
+  enabled: false
+  schemas: []
+  topics: []
+  clusters: []
+  labels: {}
+  jobLabel: {}
+  namespaceSelector: {}
+  selector: {}

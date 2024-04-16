@@ -1,0 +1,33 @@
+{{- if .Values.serviceMonitor.enabled }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels: {{ .Values.serviceMonitor.labels | toYaml }}
+  name: {{ include "kpow.fullname" . }}
+spec:
+  endpoints:
+    {{- if (include "kpow.monitor.exportAllMetrics" .)}}
+      {{- include "kpow.monitor.endpoint" "/metrics/v1" }}
+    {{- elif (include "kpow.monitor.exportAllOffsetAndClusterMetrics" .) }}
+      {{- range .Values.serviceMonitor.schemas}}
+        {{- include "kpow.monitor.endpoint" (printf "/metrics/v1/schema/%s" .) }}
+      {{- end }}
+      {{- include "kpow.monitor.endpoint" "/offsets/v1" }}
+      {{- include "kpow.monitor.endpoint" "/group-offsets/v1" }}
+    {{- else }}
+      {{- range .Values.serviceMonitor.schemas}}
+        {{- include "kpow.monitor.endpoint" (printf "/metrics/v1/schema/%s" .) }}
+      {{- end }}
+      {{- range .Values.serviceMonitor.topics}}
+        {{- include "kpow.monitor.endpoint" (printf "/offsets/v1/topic/%s" .) }}
+      {{- end }}
+      {{- range .Values.serviceMonitor.clusters}}
+        {{- include "kpow.monitor.endpoint" (printf "/metrics/v1/cluster/%s" .) }}
+        {{- include "kpow.monitor.endpoint" (printf "/offsets/v1/cluster/%s" .) }}
+      {{- end }}
+    {{- end }}
+  jobLabel: {{ .Values.serviceMonitor.jobLabel | toYaml }}
+  namespaceSelector: {{ .Values.serviceMonitor.namespaceSelector | toYaml }}
+  selector: {{ .Values.serviceMonitor.selector | toYaml }}
+{{- end }}
