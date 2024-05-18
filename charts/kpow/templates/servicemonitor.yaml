@@ -1,0 +1,43 @@
+{{- if .Values.serviceMonitor.enabled }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    {{ .Values.serviceMonitor.labels | toYaml | nindent 4 }}
+  name: {{ include "kpow.fullname" . }}
+spec:
+  endpoints:
+    {{- if eq (include "kpow.monitor.exportAllMetrics" .) "true" }}
+      {{- include "kpow.monitor.endpoint" (list "/metrics/v1" .Values) | nindent 4 }}
+    {{- else }}
+      {{- range .Values.serviceMonitor.metrics.clusters }}
+        {{- $metricsClusterEndpoint := printf "/metrics/v1/cluster/%s" . }}
+        {{- include "kpow.monitor.endpoint" (list $metricsClusterEndpoint $.Values) | nindent 4 }}
+      {{- end }}
+      {{- range .Values.serviceMonitor.metrics.schemas}}
+        {{- $schemaEndpoint := printf "/metrics/v1/schema/%s" . }}
+        {{- include "kpow.monitor.endpoint" (list $schemaEndpoint $.Values) | nindent 4 }}
+      {{- end }}
+    {{- end }}
+    {{- if eq (include "kpow.monitor.exportAllOffsets" .) "true" }}
+      {{- include "kpow.monitor.endpoint" (list "/offsets/v1" .Values) | nindent 4 }}
+    {{- else }}
+      {{- range .Values.serviceMonitor.offsets.topics }}
+        {{- $topicEndpoint := printf "/offsets/v1/topic/%s" . }}
+        {{- include "kpow.monitor.endpoint" (list $topicEndpoint $.Values) | nindent 4 }}
+      {{- end }}
+      {{- range .Values.serviceMonitor.offsets.clusters}}
+        {{- $offsetClusterEndpoint := printf "/offsets/v1/cluster/%s" . }}
+        {{- include "kpow.monitor.endpoint" (list $offsetClusterEndpoint $.Values) | nindent 4 }}
+      {{- end }}
+    {{- end }}
+    {{- if .Values.serviceMonitor.offsets.groups }}
+      {{- include "kpow.monitor.endpoint" (list "/group-offsets/v1" .Values) | nindent 4 }}
+    {{- end }}
+  jobLabel: {{ .Values.serviceMonitor.jobLabel }}
+  namespaceSelector:
+    {{- .Values.serviceMonitor.namespaceSelector | toYaml | nindent 4 }}
+  selector:
+    {{- .Values.serviceMonitor.selector | toYaml | nindent 4 }}
+{{- end }}
