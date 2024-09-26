@@ -70,3 +70,40 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+If all metrics should be exported
+*/}}
+{{- define "kpow.monitor.exportAllMetrics" -}}
+{{- with .Values.serviceMonitor.metrics }}
+{{- if and (eq (len .clusters) 0) (eq (len .schemas) 0) }}
+{{- print true }}
+{{- else }}
+{{- print false }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{/*
+If all offsets should be exported
+*/}}
+{{- define "kpow.monitor.exportAllOffsets" -}}
+{{- with .Values.serviceMonitor.offsets }}
+{{- if and (eq (len .topics) 0) (eq (len .clusters) 0) }}
+{{- print true }}
+{{- else }}
+{{- print false }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{/*
+Generate service monitor endpoint
+*/}}
+{{- define "kpow.monitor.endpoint" -}}
+{{- $endpoint := index . 0 }}
+{{- $values := index . 1 }}
+- interval: {{ $values.serviceMonitor.interval | default "15s" }}
+  port: {{ $values.service.port }}
+  path: {{ $endpoint }}
+{{- end }}
