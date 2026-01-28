@@ -1,4 +1,19 @@
-# Run Kpow for Apache Kafka in Kubernetes
+# Deprecated: Kpow Helm chart repository (legacy)
+
+This Helm chart repository is deprecated and no longer recommended for new installations.
+
+The official and actively maintained Helm charts for Kpow are now hosted at:
+
+- https://charts.factorhouse.io/charts/kpow/
+- https://github.com/factorhouse/helm-charts/tree/main/charts/kpow
+
+Some existing Kpow deployments reference https://charts.kpow.io. To avoid breaking those deployments, this chart repository remains accessible.
+
+For all new deployments and upgrades, use the charts hosted at https://charts.factorhouse.io instead.
+
+---
+
+# Run Kpow for Apache Kafka® in Kubernetes
 
 [Kpow](https://kpow.io) is the all-in-one toolkit to manage, monitor, and learn about your Kafka resources.
 
@@ -8,16 +23,18 @@ This Helm chart uses the [factorhouse/kpow](https://hub.docker.com/r/factorhouse
 
 This repository contains a single Helm chart that uses the [factorhouse/kpow](https://hub.docker.com/r/factorhouse/kpow) container on Dockerhub.
 
-* [Prerequisites](#prerequisites)
-* [Kubernetes](#kubernetes)
-* [Run Kpow in Kubernetes](#run-kpow-in-kubernetes)
-  * [Configure the Kpow Helm Repository](#configure-the-kpow-helm-repository)
-  * [Start a Kpow Instance](#start-a-kpow-instance)
-  * [Manage a Kpow Instance](#manage-a-kpow-instance)
-  * [Start Kpow with Local Changes](#start-kpow-with-local-changes)
-  * [Manage Sensitive Environment Variables](#manage-sensitive-environment-variables)
-  * [Provide Files to the Kpow Pod](#provide-files-to-the-kpow-pod)
-  * [Kpow Memory and CPU Requirements](#kpow-memory-and-cpu-requirements)
+> **Note:** For the latest supported Helm charts and documentation, see https://charts.factorhouse.io
+
+- [Prerequisites](#prerequisites)
+- [Kubernetes](#kubernetes)
+- [Run Kpow in Kubernetes](#run-kpow-in-kubernetes)
+  - [Configure the Kpow Helm Repository](#configure-the-kpow-helm-repository)
+  - [Start a Kpow Instance](#start-a-kpow-instance)
+  - [Manage a Kpow Instance](#manage-a-kpow-instance)
+  - [Start Kpow with Local Changes](#start-kpow-with-local-changes)
+  - [Manage Sensitive Environment Variables](#manage-sensitive-environment-variables)
+  - [Provide Files to the Kpow Pod](#provide-files-to-the-kpow-pod)
+  - [Kpow Memory and CPU Requirements](#kpow-memory-and-cpu-requirements)
 
 ## Prerequisites
 
@@ -68,20 +85,20 @@ helm repo update
 
 The minimum information required by Kpow to operate is:
 
-* License Details
-* Kafka Bootstrap URL
+- License Details
+- Kafka Bootstrap URL
 
 See the [Kpow Documentation](https://docs.kpow.io) for a full list of configuration options.
 
 #### Start Kpow with config from '--set env.XYZ'
 
-##### Quotation #####
+##### Quotation
 
 Some fields require quoting of characters within the value-string when using --set env.XXX to pass configuration.
 
 This particularly applies to commas, integers, and quotation marks (see examples below).
 
-##### Command #####
+##### Command
 
 Note, when using `--set` you may need to escape special characters with `\`, see:
 
@@ -162,7 +179,7 @@ Status:       Running
 #### View the Kpow Pod Logs
 
 ```bash
-kubectl logs --namespace factorhouse $POD_NAME 
+kubectl logs --namespace factorhouse $POD_NAME
 
 11:36:49.111 INFO  [main] kpow.system ? start Kpow
 ...
@@ -240,9 +257,9 @@ helm install --namespace factorhouse --create-namespace kpow ./kpow --set envFro
 
 There are occasions where you must provide files to the Kpow Pod in order for Kpow to run correctly, such files include:
 
-* RBAC configuration
-* SSL Keystores
-* SSL Truststores
+- RBAC configuration
+- SSL Keystores
+- SSL Truststores
 
 How you provide these files is down to user preference, we are not able to provide any support or instruction in this regard.
 
