@@ -1,15 +1,15 @@
-# Deprecated: Kpow Helm chart repository (legacy)
+# Deprecated: Kpow Helm Chart repository (legacy)
 
-This Helm chart repository is deprecated and no longer recommended for new installations.
+This Helm Chart repository is deprecated and no longer recommended for new installations.
 
-The official and actively maintained Helm charts for Kpow are now hosted at:
+The official and actively maintained Helm Charts for Kpow are now hosted at:
 
 - https://charts.factorhouse.io/charts/kpow/
 - https://github.com/factorhouse/helm-charts/tree/main/charts/kpow
 
-Some existing Kpow deployments reference https://charts.kpow.io. To avoid breaking those deployments, this chart repository remains accessible.
+Some existing Kpow deployments reference https://charts.kpow.io. To avoid breaking those deployments, this Helm Chart repository remains accessible.
 
-For all new deployments and upgrades, use the charts hosted at https://charts.factorhouse.io instead.
+For all new deployments and upgrades, use the Charts hosted at https://charts.factorhouse.io instead.
 
 ---
 
@@ -17,13 +17,13 @@ For all new deployments and upgrades, use the charts hosted at https://charts.fa
 
 [Kpow](https://kpow.io) is the all-in-one toolkit to manage, monitor, and learn about your Kafka resources.
 
-This Helm chart uses the [factorhouse/kpow](https://hub.docker.com/r/factorhouse/kpow) container from Dockerhub.
+This Helm Chart uses the [factorhouse/kpow](https://hub.docker.com/r/factorhouse/kpow) container from Dockerhub.
 
 # Helm Charts
 
-This repository contains a single Helm chart that uses the [factorhouse/kpow](https://hub.docker.com/r/factorhouse/kpow) container on Dockerhub.
+This repository contains a single Helm Chart that uses the [factorhouse/kpow](https://hub.docker.com/r/factorhouse/kpow) container on Dockerhub.
 
-> **Note:** For the latest supported Helm charts and documentation, see https://charts.factorhouse.io
+> **Note:** For the latest supported Helm Charts and documentation, see https://charts.factorhouse.io
 
 - [Prerequisites](#prerequisites)
 - [Kubernetes](#kubernetes)
@@ -245,7 +245,7 @@ data:
 kubectl apply -f ./kpow-secrets.yaml --namespace factorhouse
 ```
 
-Then run the helm chart (this can be used in conjunction with `envFromConfigMap`)
+Then run the Helm Chart (this can be used in conjunction with `envFromConfigMap`)
 
 See the Kubernetes documentation on [configuring all key value pairs in a secret as environment variables](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#configure-all-key-value-pairs-in-a-secret-as-container-environment-variables) for more information.
 

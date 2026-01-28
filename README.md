@@ -2,7 +2,7 @@
 
 This repository has been archived and is no longer maintained.
 
-**The official and actively maintained Helm charts for Kpow are now hosted at:**
+**The official and actively maintained Helm Charts for Kpow are now hosted at:**
 https://charts.factorhouse.io/charts/kpow/
 
 See [factorhouse/helm-charts](https://github.com/factorhouse/helm-charts) for our up-to-date product Helm Charts.
